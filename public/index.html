@@ -281,7 +281,7 @@ body.is-desktop #combat-log{bottom:60px;}
     <div id="title-scroll-em" style="font-size:40px;animation:emSpin 3s ease-in-out infinite;"></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;animation:fadeSlideUp .5s ease .4s backwards;">
       <button class="btn btn-gold" onclick="goSelect()" style="font-size:16px;padding:13px 36px;">🐾 Play Now</button>
-      <button class="btn btn-dim" onclick="document.getElementById('mp-panel').style.display='flex';" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.5);color:#60a5fa;">🌐 Online</button>
+      <button class="btn btn-dim" onclick="document.getElementById('mp-panel').style.display='flex';" title="Play with friends online! Connect to a server, create or join a room, and play together in real time!" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.5);color:#60a5fa;">🌐 Online</button>
       <button class="btn btn-dim" onclick="openControls()">⌨️ Controls</button>
     </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;animation:fadeSlideUp .5s ease .5s backwards;">
@@ -3992,22 +3992,23 @@ function removeRemotePlayer(id){
   </div>
   <div style="width:100%;max-width:480px;display:flex;flex-direction:column;gap:10px;">
     <div style="background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;">
-      <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.35);letter-spacing:2px;margin-bottom:8px;">SERVER URL (from Glitch)</div>
+      <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.35);letter-spacing:2px;margin-bottom:4px;">SERVER URL</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.25);margin-bottom:8px;">Paste your server URL here, then click Connect</div>
       <div style="display:flex;gap:6px;">
-        <input id="server-url" type="text" placeholder="https://your-app.glitch.me" style="flex:1;padding:8px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:12px;font-family:monospace;outline:none;"/>
-        <button onclick="connectServer()" style="background:#1e40af;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;">Connect</button>
+        <input id="server-url" type="text" placeholder="https://wildworld-production.up.railway.app" style="flex:1;padding:8px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:12px;font-family:monospace;outline:none;"/>
+        <button onclick="connectServer()" title="Click to connect to the multiplayer server. You must enter a valid server URL first!" style="background:#1e40af;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;">Connect</button>
       </div>
       <div id="server-status" style="font-size:11px;margin-top:6px;color:rgba(255,255,255,.3);">Not connected</div>
     </div>
     <div style="background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;">
       <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.35);letter-spacing:2px;margin-bottom:8px;">YOUR NAME</div>
-      <input id="player-name" type="text" placeholder="Enter your name..." maxlength="16" value="Player" style="width:100%;padding:8px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:14px;font-family:'Nunito',sans-serif;outline:none;"/>
+      <input id="player-name" type="text" placeholder="Enter your name..." maxlength="16" value="Player" title="Type your player name here. This is what other players will see!" style="width:100%;padding:8px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:14px;font-family:'Nunito',sans-serif;outline:none;"/>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <button id="btn-create" onclick="createRoom()" disabled style="background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.4);color:#22c55e;border-radius:10px;padding:12px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;opacity:.4;">🎮 Create Room</button>
+      <button id="btn-create" onclick="createRoom()" disabled title="Start a new multiplayer room. You will get a 6-letter code to share with friends so they can join!" style="background:rgba(34,197,94,.12);border:2px solid rgba(34,197,94,.4);color:#22c55e;border-radius:10px;padding:12px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;opacity:.4;">🎮 Create Room</button>
       <div style="display:flex;gap:5px;">
-        <input id="mp-room-code" type="text" placeholder="CODE" maxlength="6" style="flex:1;padding:10px 8px;background:rgba(255,255,255,.06);border:2px solid rgba(59,130,246,.4);border-radius:10px;color:#60a5fa;font-size:16px;font-family:monospace;font-weight:900;letter-spacing:3px;outline:none;text-transform:uppercase;text-align:center;min-width:0;"/>
-        <button id="btn-join" onclick="joinRoomMP()" disabled style="background:rgba(59,130,246,.12);border:2px solid rgba(59,130,246,.4);color:#60a5fa;border-radius:10px;padding:10px 12px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;opacity:.4;white-space:nowrap;">Join</button>
+        <input id="mp-room-code" type="text" placeholder="CODE" maxlength="6" title="Enter the 6-letter room code that your friend shared with you" style="flex:1;padding:10px 8px;background:rgba(255,255,255,.06);border:2px solid rgba(59,130,246,.4);border-radius:10px;color:#60a5fa;font-size:16px;font-family:monospace;font-weight:900;letter-spacing:3px;outline:none;text-transform:uppercase;text-align:center;min-width:0;"/>
+        <button id="btn-join" onclick="joinRoomMP()" disabled title="Join a friend's room using the 6-letter code they gave you. Type the code in the box first!" style="background:rgba(59,130,246,.12);border:2px solid rgba(59,130,246,.4);color:#60a5fa;border-radius:10px;padding:10px 12px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;opacity:.4;white-space:nowrap;">Join</button>
       </div>
     </div>
     <div id="mp-room-info" style="display:none;background:#0d1117;border:2px solid rgba(255,215,0,.3);border-radius:12px;padding:14px;">
@@ -4022,13 +4023,4 @@ function removeRemotePlayer(id){
       <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,.35);letter-spacing:2px;margin-bottom:8px;">💬 CHAT</div>
       <div id="mp-chat-msgs" style="height:90px;overflow-y:auto;margin-bottom:8px;"></div>
       <div style="display:flex;gap:6px;">
-        <input id="mp-chat-inp" type="text" placeholder="Say something..." maxlength="100" style="flex:1;padding:6px 10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:12px;font-family:'Nunito',sans-serif;outline:none;" onkeydown="if(event.key==='Enter')sendChatMP();"/>
-        <button onclick="sendChatMP()" style="background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.4);color:#60a5fa;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;">Send</button>
-      </div>
-    </div>
-    <div style="font-size:10px;color:rgba(255,255,255,.2);text-align:center;">Host free at <b>glitch.com</b> · Up to 8 players</div>
-  </div>
-</div>
-
-</body>
-</html>
+        <input id="mp-chat-inp" type="text" placeholder="Say something..." maxlength="100" st
